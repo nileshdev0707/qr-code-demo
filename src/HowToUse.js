@@ -6,10 +6,9 @@ const HowToUse = (props) => {
       <div>
         <br />
         <br />
-        Built using&nbsp;
         <br />
         <br />
-        Free QR code scanner and barcode scanner.
+        QR code scanner and barcode scanner.
       </div>
     </div>
   );
