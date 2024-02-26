@@ -1,36 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import QrReader from 'html5-qrcode';
-import './QRScanner.css'; // You can create a CSS file for styling
+// @ts-check
 
-const QRScanner = () => {
-  const [scannedData, setScannedData] = useState('');
+import React, { useState } from 'react';
+import './App.css';
+import HowToUse from './HowToUse';
+import Html5QrcodePlugin from './Html5QrcodePlugin';
+import ResultContainerPlugin from './ResultContainerPlugin';
 
-  useEffect(() => {
-    const qrReader = new QrReader(document.getElementById('qr-reader'), { fps: 10 });
-
-    qrReader.render(async (data) => {
-      if (data) {
-        setScannedData(data);
-        qrReader.stop();
-      }
-    });
-
-    return () => qrReader.stop();
-  }, []);
+const App = (props) => {
+  const [decodedResults, setDecodedResults] = useState([]);
+  const onNewScanResult = (decodedText, decodedResult) => {
+    console.log("App [result]", decodedResult);
+    setDecodedResults(prev => [...prev, decodedResult]);
+  };
 
   return (
     <div className="App">
-      <div className="qr-scanner-container">
-        <h1>QR Code Scanner</h1>
-        <div id="qr-reader"></div>
-        {scannedData && (
-          <div className="scanned-data">
-            <p>Scanned Data: {scannedData}</p>
-          </div>
-        )}
-      </div>
+      <section className="App-section">
+        <div className="App-section-title">qrcode  demo</div>
+        <br />
+        <br />
+        <br />
+        <Html5QrcodePlugin
+          fps={10}
+          qrbox={250}
+          disableFlip={false}
+          qrCodeSuccessCallback={onNewScanResult}
+        />
+        <div className="buttion-claas">
+          <button>Open Link</button>
+          <button>Open website</button>
+        </div>
+        <ResultContainerPlugin results={decodedResults} />
+        <HowToUse />
+      </section>
     </div>
   );
 };
 
-export default QRScanner;
+export default App;
