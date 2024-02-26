@@ -18,3 +18,8 @@ code {
   padding: 15px;
   margin-top: 10px;
 }
+.buttion-claas {
+  display: flex;
+  margin: 10px;
+  justify-content: space-around;
+}
