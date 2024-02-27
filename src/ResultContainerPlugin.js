@@ -49,8 +49,8 @@ const ResultContainerPlugin = (props) => {
   return (
     <div className='Result-container'>
       {props.decodedDataResults?.price ? <div className='Result-header'>
-        Price - {props.decodedDataResults?.price} <br/>
-        Daysleft - {props.decodedDataResults?.daysLeft}
+        <span className="text-h1">Price </span> - {props.decodedDataResults?.price} <br/>
+        <span className="text-h1">Daysleft </span> - {props.decodedDataResults?.daysLeft}
       </div> : ""}
       <br/>
       <div className='Result-section'>
