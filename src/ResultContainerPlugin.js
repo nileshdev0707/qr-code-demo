@@ -1,8 +1,9 @@
 import React from 'react';
 
+
 function filterResults (results) {
   let filteredResults = [];
-  for (var i = 0; i < results.length; ++i) {
+  for (var i = 0; i < results?.length; ++i) {
     if (i === 0) {
       filteredResults.push(results[i]);
       continue;
@@ -44,9 +45,14 @@ const ResultContainerTable = ({ data }) => {
 
 const ResultContainerPlugin = (props) => {
   const results = filterResults(props.results);
+  console.log('Results:', props);
   return (
     <div className='Result-container'>
-      <div className='Result-header'>Scanned results ({results.length})</div>
+      {props.decodedDataResults?.price ? <div className='Result-header'>
+        Price - {props.decodedDataResults?.price} <br/>
+        Daysleft - {props.decodedDataResults?.daysLeft}
+      </div> : ""}
+      <br/>
       <div className='Result-section'>
         <ResultContainerTable data={results} />
       </div>

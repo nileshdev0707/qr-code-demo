@@ -23,3 +23,12 @@ code {
   margin: 10px;
   justify-content: space-around;
 }
+
+.buttion-claas button{
+  background-color: #3a2104;
+  border-color: #3a2104;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px;
+}
